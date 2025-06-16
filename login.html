@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <script>
+        function validate() {
+            if (document.getElementById("user").value === "" ||
+                document.getElementById("pass").value === "") {
+                alert("Username and Password are required!");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h3>Login</h3>
+    <form onsubmit="return validate()">
+        <input type="text" id="user" placeholder="Username"><br><br>
+        <input type="password" id="pass" placeholder="Password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+</html>
