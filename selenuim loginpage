@@ -1,29 +1,84 @@
 Login.html----------------------------------------------
 
-<!DOCTYPE html>
 <html>
 <head>
-  <title>Login Page</title>
-  <script src="login.js"></script>
+<title> Login Page</title>
+<script language="javascript">
+function validate()
+{
+var u=document.f1.u.value;
+var p=document.f1.p.value;
+if(u=="MVSREC" && p=="ITD")
+{
+window.open("loginsuccess.html");
+}
+else
+{
+window.open("loginfail.html");
+}
+}
+</script>
 </head>
 <body>
-  <h3>Login</h3>
-  <input type="text" id="user" placeholder="Username"><br>
-  <input type="password" id="pass" placeholder="Password"><br>
-  <button onclick="validate()">Login</button>
-  <p id="msg"></p>
+<form name="f1">
+<h1 align="center" style="color:blue">Login Page</h1>
+<table align="center" bgcolor="pink">
+<tr>
+<td>UserId</td>
+<td><input type="text" name="u" id="un"></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><input type="password" name="p" id="pw"></td>
+</tr>
+<tr>
+<td><input type="button" value="Signin" id="s"
+onclick="validate()"></td>
+<td><input type="reset" value="Reset id="r"></td>
+</tr>
+</table>
+</form>
 </body>
 </html>
 
 Login.js------------------------------------------------
 
-function validate() {
-  let u = document.getElementById("user").value;
-  let p = document.getElementById("pass").value;
-
-  if (u === "admin" && p === "1234") {
-    document.getElementById("msg").innerText = "Login Successful!";
-  } else {
-    document.getElementById("msg").innerText = "Invalid credentials";
-  }
+const { Builder, By, until } = require("selenium-webdriver");
+const assert = require("assert");
+async function loginTest() {
+// launch the browser
+let driver = await new Builder().forBrowser("chrome").build();
+try {
+await driver.get("file:///home/mvsr/myloginDemo/login.html");
+await driver.findElement(By.id("un")).sendKeys("MVSREC");
+await driver.findElement(By.id("pw")).sendKeys("ITD");
+await driver.findElement(By.id("s")).click();
+const title = await driver.getTitle();
+assert.strictEqual(title,"Login Page");
+console.log("success");
+} finally {
+await driver.quit();
 }
+}
+loginTest();
+
+vi loginsucess.html----------------------------------------------------
+
+<html>
+<head>
+<title> Success </title>
+</head>
+<body>
+<h1 align="center" style="color:red"> Login Succeess</h1>
+</body>
+</html>
+
+vi loginfail.html--------------------------------------------------
+<html>
+<head>
+<title> Fail </title>
+</head>
+<body>
+<h1 align="center" style="color:red"> Login Failed</h1>
+</body>
+</html>
