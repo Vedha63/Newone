@@ -1,0 +1,29 @@
+Login.html----------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <script src="login.js"></script>
+</head>
+<body>
+  <h3>Login</h3>
+  <input type="text" id="user" placeholder="Username"><br>
+  <input type="password" id="pass" placeholder="Password"><br>
+  <button onclick="validate()">Login</button>
+  <p id="msg"></p>
+</body>
+</html>
+
+Login.js------------------------------------------------
+
+function validate() {
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
+
+  if (u === "admin" && p === "1234") {
+    document.getElementById("msg").innerText = "Login Successful!";
+  } else {
+    document.getElementById("msg").innerText = "Invalid credentials";
+  }
+}
