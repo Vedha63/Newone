@@ -1,3 +1,7 @@
+$ mkdir googleDemo
+$ cd googleDemo
+vi app.js
+-----------------
 const {Builder, By, Key} = require("selenium-webdriver");
 async function example(){
 let driver = await new Builder().forBrowser("chrome").build();
@@ -6,3 +10,21 @@ console.log("browser opened");
 await driver.quit();
 }
 example()
+--------------------------
+ node -v
+// check whether node is installed. If not, install using below commands.
+// sudo apt-get update
+//sudo apt install nodejs
+ npm -v
+// check whether npm is installed. If not, install using below commands.
+//sudo apt install npm
+ npm init // Initilaze the node package
+ npm install selenium-webdriver // add selenium web driver as dependency
+ npm init //check out for addition of selenium dependency
+ node app.js
+-----------
+For installation of higher version of node
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+nvm list-remote
+nvm install v16.14.0
