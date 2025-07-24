@@ -9,7 +9,8 @@ var p=document.getElementById("password").value;
 if(u==="mvsr" && p==="mvsr")
 {
     alert("Login successful!");
-    return true;}
+    return true;
+}
 else
 {
     alert("Invalid credentials.");
@@ -21,8 +22,8 @@ else
 <body>
     <h3>Login</h3>
     <form onsubmit="return validate()">
-        <input type="text" id="user" placeholder="Username"><br><br>
-        <input type="password" id="pass" placeholder="Password"><br><br>
+        <input type="text" id="u" placeholder="Username"><br><br>
+        <input type="password" id="p" placeholder="Password"><br><br>
         <input type="submit" value="Login">
     </form>
 </body>
